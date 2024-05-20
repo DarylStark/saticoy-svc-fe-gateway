@@ -6,8 +6,12 @@ RUN rm /etc/nginx/conf.d/default.conf
 # Create a directory for the configuration files
 RUN mkdir -p /etc/nginx/services/
 
+# Create a dictory for the cache
+RUN mkdir -p /var/cache/nginx/
+
 # Copy the default configuration file
 COPY src/default.conf /etc/nginx/conf.d/default.conf
+COPY src/cache.conf /etc/nginx/conf.d/cache.conf
 
 # Copy the configuration files for the services
 COPY src/landing-page.conf /etc/nginx/services/landing-page.conf.template
